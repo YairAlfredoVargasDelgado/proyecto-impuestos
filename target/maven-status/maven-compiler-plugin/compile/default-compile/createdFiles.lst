@@ -1,0 +1,14 @@
+com\poo\impuestovehicular\datos\Archivo.class
+com\poo\impuestovehicular\entidades\Rol.class
+com\poo\impuestovehicular\entidades\Impuesto$1.class
+com\poo\impuestovehicular\logica\Lógica.class
+com\poo\impuestovehicular\entidades\Motocicleta.class
+com\poo\impuestovehicular\entidades\Impuesto.class
+com\poo\impuestovehicular\logica\LógicaCliente.class
+com\poo\impuestovehicular\entidades\Usuario.class
+com\poo\impuestovehicular\datos\Datos.class
+com\poo\impuestovehicular\logica\LógicaCliente$1.class
+com\poo\impuestovehicular\entidades\Cliente.class
+com\poo\impuestovehicular\entidades\EntidadBase.class
+com\poo\impuestovehicular\entidades\Marca.class
+com\poo\impuestovehicular\entidades\Vehículo.class

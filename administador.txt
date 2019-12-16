@@ -1,0 +1,2 @@
+1019076428;admin;[1, 2, 3, 4, 5, 6];1019076428;Yair Alfredo;Vargas;Delgado;27
+1003241124;marlon;[1, 2, 3, 4, 5, 6];1003241124;Marlon David;Olivella;Añez;19
