@@ -51,7 +51,6 @@ public class MarcasDlg extends javax.swing.JDialog {
         buscarBtn = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         eliminarBtn = new javax.swing.JButton();
-        modificarBtn = new javax.swing.JButton();
         registrarBtn = new javax.swing.JButton();
         errorNombreLbl = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -101,14 +100,6 @@ public class MarcasDlg extends javax.swing.JDialog {
             }
         });
 
-        modificarBtn.setText("Modificar");
-        modificarBtn.setToolTipText("");
-        modificarBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarBtnActionPerformed(evt);
-            }
-        });
-
         registrarBtn.setText("Registrar");
         registrarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,8 +144,6 @@ public class MarcasDlg extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(registrarBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(modificarBtn)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(eliminarBtn))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 505, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))))
@@ -177,7 +166,6 @@ public class MarcasDlg extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(registrarBtn)
-                    .addComponent(modificarBtn)
                     .addComponent(eliminarBtn)
                     .addComponent(buscarBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -227,16 +215,6 @@ public class MarcasDlg extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void modificarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarBtnActionPerformed
-        if (!lógicaMarca.actualizar(consecutivoLbl.getText(), obtenerMarca())) {
-            JOptionPane.showMessageDialog(this, "La modificación falló");
-            return;
-        }
-        
-        JOptionPane.showMessageDialog(this, "La modificación fué exitosa");
-        cargarTabla();
-    }//GEN-LAST:event_modificarBtnActionPerformed
-
     private void eliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtnActionPerformed
         Marca marca = lógicaMarca.obtener(nombreTxtFld.getText(), false);
         if (marca.getVehículos().size() > 0) {
@@ -275,7 +253,6 @@ public class MarcasDlg extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable marcasTbl;
-    private javax.swing.JButton modificarBtn;
     private javax.swing.JTextField nombreTxtFld;
     private javax.swing.JButton registrarBtn;
     // End of variables declaration//GEN-END:variables

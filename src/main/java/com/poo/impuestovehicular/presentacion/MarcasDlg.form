@@ -55,8 +55,6 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="registrarBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="modificarBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="eliminarBtn" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane2" alignment="1" min="-2" pref="505" max="-2" attributes="0"/>
@@ -88,7 +86,6 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="registrarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="modificarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="eliminarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="buscarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -168,15 +165,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="eliminarBtnActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="modificarBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Modificar"/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modificarBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="registrarBtn">
