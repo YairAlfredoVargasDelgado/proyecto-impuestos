@@ -1,10 +1,46 @@
 package com.poo.impuestovehicular.presentacion;
 
+import com.poo.impuestovehicular.entidades.Impuesto;
+import com.poo.impuestovehicular.entidades.Vehículo;
+import com.poo.impuestovehicular.logica.LógicaImpuesto;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 public class ImpuestosDlg extends javax.swing.JDialog {
 
-    public ImpuestosDlg(java.awt.Frame parent, boolean modal) {
+    private LógicaImpuesto li = new LógicaImpuesto();
+    ArrayList<Vehículo> vehículos;
+
+    public ImpuestosDlg(java.awt.Frame parent, boolean modal, ArrayList<Vehículo> vehículos) {
         super(parent, modal);
         initComponents();
+        this.vehículos = vehículos;
+        cargarTabla();
+    }
+
+    private void cargarTabla() {
+        DefaultTableModel model = new DefaultTableModel();
+
+        model.addColumn("Placa del vehículo");
+        model.addColumn("Tarifa");
+        model.addColumn("Fecha de liquidación");
+        model.addColumn("Total");
+        model.addColumn("Estado");
+
+        for (Impuesto i : li.obtenerTodas(false)) {
+            if (vehículos.contains(i.getVehículo())) {
+                model.addRow(new Object[]{
+                    i.getIdVehículo(),
+                    i.getTarifa(),
+                    i.getFechaDeLiquidación(),
+                    i.getTotal(),
+                    i.isPagado() ? "Pagado" : "En espera"
+                });
+            }
+        }
+
+        jTable1.setModel(model);
+
     }
 
     @SuppressWarnings("unchecked")

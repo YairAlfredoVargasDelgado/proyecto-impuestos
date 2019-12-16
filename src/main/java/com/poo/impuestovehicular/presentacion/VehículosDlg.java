@@ -11,9 +11,8 @@ import com.poo.impuestovehicular.logica.LógicaImpuesto;
 import com.poo.impuestovehicular.logica.LógicaMarca;
 import com.poo.impuestovehicular.logica.LógicaVehículo;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -85,7 +84,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
                 for (Vehículo v : cliente.getVehículos()) {
                     model.addRow(new Object[]{
                         v.getPlaca(),
-                        v.getMarca(),
+                        v.getIdMarca(),
                         v.getClase(),
                         v.getTipo(),
                         v.getModelo(),
@@ -97,7 +96,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
                 for (Vehículo v : lógicaVehículo.obtenerTodas(false)) {
                     model.addRow(new Object[]{
                         v.getPlaca(),
-                        v.getMarca(),
+                        v.getIdMarca(),
                         v.getClase(),
                         v.getTipo(),
                         v.getModelo(),
@@ -110,7 +109,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
             for (Vehículo v : lógicaVehículo.obtenerTodas(false)) {
                 model.addRow(new Object[]{
                     v.getPlaca(),
-                    v.getMarca(),
+                    v.getIdMarca(),
                     v.getClase(),
                     v.getTipo(),
                     v.getModelo(),
@@ -278,6 +277,11 @@ public final class VehículosDlg extends javax.swing.JDialog {
         });
 
         jButton7.setText("Ver liquidaciones");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -468,6 +472,10 @@ public final class VehículosDlg extends javax.swing.JDialog {
 
         JOptionPane.showMessageDialog(this, "La liquidación fue exitosa");
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        new ImpuestosDlg(null, true, cliente.getVehículos()).setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

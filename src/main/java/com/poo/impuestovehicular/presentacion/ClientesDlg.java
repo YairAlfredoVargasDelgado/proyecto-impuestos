@@ -370,8 +370,15 @@ public class ClientesDlg extends javax.swing.JDialog {
     }//GEN-LAST:event_registrarBtnActionPerformed
 
     private void eliminarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBtnActionPerformed
-        if (lógicaCliente.obtener(identificaciónTxtFld.getText(), false) == null) {
+        Cliente cliente = lógicaCliente.obtener(identificaciónTxtFld.getText(), false);
+        
+        if (cliente == null) {
             JOptionPane.showMessageDialog(this, "El cliente no se encuentra registrado");
+            return;
+        }
+        
+        if (cliente.getVehículos().size() > 0) {
+            JOptionPane.showMessageDialog(this, "Este cliente no se puede eliminar porque tiene vehículos asociados");
             return;
         }
 
@@ -429,14 +436,14 @@ public class ClientesDlg extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "El cliente no está registado");
             return;
         }
-        
+
         Cliente cliente = lógicaCliente.obtener(identificaciónTxtFld.getText(), false);
         if (cliente == null) {
             JOptionPane.showMessageDialog(this, "Este cliente no está registrado");
             return;
         }
 
-        new ClienteFrm(new LógicaCliente().obtener(identificaciónTxtFld.getText(), false)).setVisible(true);
+        new ClienteFrm((JFrame) this.getOwner(), true, new LógicaCliente().obtener(identificaciónTxtFld.getText(), false)).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

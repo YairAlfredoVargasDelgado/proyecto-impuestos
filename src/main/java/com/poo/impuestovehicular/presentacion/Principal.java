@@ -33,7 +33,7 @@ public class Principal {
                 Usuario usuario = iniciarSesiónDlg.getUsuario();
 
                 if (iniciarSesiónDlg.getUsuario() instanceof Cliente) {
-                    new ClienteFrm((Cliente) iniciarSesiónDlg.getUsuario()).setVisible(true);
+                    new ClienteFrm(null, true, (Cliente) iniciarSesiónDlg.getUsuario()).setVisible(true);
                     return;
                 }
 

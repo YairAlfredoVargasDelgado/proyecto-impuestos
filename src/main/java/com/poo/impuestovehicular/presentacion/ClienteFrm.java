@@ -2,13 +2,15 @@ package com.poo.impuestovehicular.presentacion;
 
 import com.poo.impuestovehicular.entidades.Cliente;
 import com.poo.impuestovehicular.entidades.Vehículo;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
-public class ClienteFrm extends javax.swing.JFrame {
+public class ClienteFrm extends javax.swing.JDialog {
     
     private final Cliente cliente;
 
-    public ClienteFrm(Cliente cliente) {
+    public ClienteFrm(JFrame parent, boolean modal, Cliente cliente) {
+        super(parent, modal);
         initComponents();
         
         this.cliente = cliente;
@@ -55,7 +57,7 @@ public class ClienteFrm extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jButton2.setText("Cerrar");
