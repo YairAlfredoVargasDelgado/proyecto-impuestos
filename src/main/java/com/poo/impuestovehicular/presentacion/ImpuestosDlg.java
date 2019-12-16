@@ -4,6 +4,7 @@ import com.poo.impuestovehicular.entidades.Impuesto;
 import com.poo.impuestovehicular.entidades.Vehículo;
 import com.poo.impuestovehicular.logica.LógicaImpuesto;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class ImpuestosDlg extends javax.swing.JDialog {
@@ -20,7 +21,8 @@ public class ImpuestosDlg extends javax.swing.JDialog {
 
     private void cargarTabla() {
         DefaultTableModel model = new DefaultTableModel();
-
+        
+        model.addColumn("Código");
         model.addColumn("Placa del vehículo");
         model.addColumn("Tarifa");
         model.addColumn("Fecha de liquidación");
@@ -30,6 +32,7 @@ public class ImpuestosDlg extends javax.swing.JDialog {
         for (Impuesto i : li.obtenerTodas(false)) {
             if (vehículos.contains(i.getVehículo())) {
                 model.addRow(new Object[]{
+                    i.getId(),
                     i.getIdVehículo(),
                     i.getTarifa(),
                     i.getFechaDeLiquidación(),
@@ -40,7 +43,6 @@ public class ImpuestosDlg extends javax.swing.JDialog {
         }
 
         jTable1.setModel(model);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -78,6 +80,11 @@ public class ImpuestosDlg extends javax.swing.JDialog {
         jLabel1.setText("Id");
 
         jButton3.setText("Pagar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Volver");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +142,23 @@ public class ImpuestosDlg extends javax.swing.JDialog {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Impuesto i = li.obtener(jTextField1.getText(), true);
+        
+        if (i == null) {
+            JOptionPane.showMessageDialog(this, "Esta factura no está registrada");
+            return;
+        }
+        
+        i.setPagado(true);
+        
+        if (!li.actualizar(i.getId(), i)) {
+            JOptionPane.showMessageDialog(this, "Error realizando el pago");
+            return;
+        }
+        JOptionPane.showMessageDialog(this, "El pago se realizó correctamente");
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

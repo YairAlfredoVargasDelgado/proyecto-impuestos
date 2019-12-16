@@ -29,8 +29,6 @@ public class Principal {
             public void run() {
                 IniciarSesiónDlg iniciarSesiónDlg = new IniciarSesiónDlg(null, true);
                 iniciarSesiónDlg.setVisible(true);
-                
-                Usuario usuario = iniciarSesiónDlg.getUsuario();
 
                 if (iniciarSesiónDlg.getUsuario() instanceof Cliente) {
                     new ClienteFrm(null, true, (Cliente) iniciarSesiónDlg.getUsuario()).setVisible(true);
