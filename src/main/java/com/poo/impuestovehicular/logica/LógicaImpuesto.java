@@ -21,7 +21,7 @@ public class LógicaImpuesto extends Lógica<Impuesto> {
                 impuesto.setTarifa(Double.parseDouble(_datos[2]));
                 impuesto.setFechaDeLiquidación(LocalDate.parse(_datos[3]));
                 impuesto.setTotal(Double.parseDouble(_datos[4]));
-                impuesto.setPagado(Boolean.getBoolean(_datos[5]));
+                impuesto.setPagado(_datos[5].equals("true"));
                 
                 if (!lazy) {
                     impuesto.setVehículo(new LógicaVehículo().obtener(_datos[1], true));

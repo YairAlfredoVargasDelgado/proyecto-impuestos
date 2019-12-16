@@ -34,9 +34,9 @@ public class ImpuestosDlg extends javax.swing.JDialog {
                 model.addRow(new Object[]{
                     i.getId(),
                     i.getIdVehículo(),
-                    i.getTarifa(),
+                    String.format("%.0f", i.getTarifa()),
                     i.getFechaDeLiquidación(),
-                    i.getTotal(),
+                    String.format("%.0f", i.getTotal()),
                     i.isPagado() ? "Pagado" : "En espera"
                 });
             }
