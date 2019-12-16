@@ -3,6 +3,7 @@ package com.poo.impuestovehicular.presentacion;
 import com.poo.impuestovehicular.entidades.ClaseDeVehículo;
 import com.poo.impuestovehicular.entidades.Cliente;
 import com.poo.impuestovehicular.entidades.Impuesto;
+import com.poo.impuestovehicular.entidades.Marca;
 import com.poo.impuestovehicular.entidades.TipoDeVehículo;
 import com.poo.impuestovehicular.entidades.Vehículo;
 import com.poo.impuestovehicular.logica.LógicaCliente;
@@ -38,7 +39,9 @@ public final class VehículosDlg extends javax.swing.JDialog {
     private void cargarMarcaCmbBx() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
-        model.addAll(lógicaMarca.obtenerTodas(true).stream().map(m -> m.getNombre()).collect(Collectors.toList()));
+        for (Marca m: lógicaMarca.obtenerTodas(true)) {
+            model.addElement(m);
+        }
 
         marcaCmbBx.setModel(model);
         marcaCmbBx.setSelectedIndex(0);
