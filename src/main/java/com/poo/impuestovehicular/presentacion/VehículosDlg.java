@@ -89,7 +89,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
                         v.getClase(),
                         v.getTipo(),
                         v.getModelo(),
-                        String.format("%f", v.getAvaluo()),
+                        String.format("%.0f", v.getAvaluo()),
                         v.getCapacidad()
                     });
                 }
@@ -101,7 +101,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
                         v.getClase(),
                         v.getTipo(),
                         v.getModelo(),
-                        String.format("%f", v.getAvaluo()),
+                        String.format("%.0f", v.getAvaluo()),
                         v.getCapacidad()
                     });
                 }
@@ -114,7 +114,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
                     v.getClase(),
                     v.getTipo(),
                     v.getModelo(),
-                    String.format("%f", v.getAvaluo()),
+                    String.format("%.0f", v.getAvaluo()),
                     v.getCapacidad()
                 });
             }
@@ -414,7 +414,9 @@ public final class VehículosDlg extends javax.swing.JDialog {
 
         JOptionPane.showMessageDialog(this, "Registro de vehículo exitoso");
 
-        // cliente = new LógicaCliente().obtener(cliente.getIdentificación(), false);
+        if (cliente != null) {
+            cliente = new LógicaCliente().obtener(cliente.getIdentificación(), false);
+        }
         cargarVehículosTbl();
     }//GEN-LAST:event_jButton2ActionPerformed
 
