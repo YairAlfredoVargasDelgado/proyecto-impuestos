@@ -23,10 +23,8 @@ public class AdministradorDlg extends javax.swing.JDialog {
         
         ArrayList<String> list = new ArrayList<String>();
         
-        list.add("Administrador");
-        list.add("Intermediario");
-        
-        model.addAll(list);
+        model.addElement("Administrador");
+        model.addElement("Intermediario");
         
         rolCmbBx.setModel(model);
         rolCmbBx.setSelectedIndex(0);

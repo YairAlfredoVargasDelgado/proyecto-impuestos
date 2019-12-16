@@ -62,11 +62,8 @@ public final class VehículosDlg extends javax.swing.JDialog {
     private void cargarTipoCmbBx() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
-        ArrayList<String> lista = new ArrayList<>();
-        lista.add("Particular");
-        lista.add("Público");
-
-        model.addAll(lista);
+        model.addElement("Particular");
+        model.addElement("Público");
 
         tipoCmbBx.setModel(model);
         tipoCmbBx.setSelectedIndex(0);
