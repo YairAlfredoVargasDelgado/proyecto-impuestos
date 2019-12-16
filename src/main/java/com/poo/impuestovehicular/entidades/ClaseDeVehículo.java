@@ -6,7 +6,7 @@ public enum ClaseDeVehículo {
     
     CARGA,
     
-    PASAJEROS,
+    PASAJERO,
     
     MOTOCICLETA
     

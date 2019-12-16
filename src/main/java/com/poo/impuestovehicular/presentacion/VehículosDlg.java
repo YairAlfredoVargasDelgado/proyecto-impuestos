@@ -78,6 +78,8 @@ public final class VehículosDlg extends javax.swing.JDialog {
         model.addColumn("Avalúo");
         model.addColumn("Capacidad");
 
+        System.out.println(cliente);
+
         if (cliente != null) {
             if (cliente.getVehículos() != null) {
                 for (Vehículo v : cliente.getVehículos()) {
@@ -87,7 +89,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
                         v.getClase(),
                         v.getTipo(),
                         v.getModelo(),
-                        v.getAvaluo(),
+                        String.format("%f", v.getAvaluo()),
                         v.getCapacidad()
                     });
                 }
@@ -99,7 +101,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
                         v.getClase(),
                         v.getTipo(),
                         v.getModelo(),
-                        v.getAvaluo(),
+                        String.format("%f", v.getAvaluo()),
                         v.getCapacidad()
                     });
                 }
@@ -112,7 +114,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
                     v.getClase(),
                     v.getTipo(),
                     v.getModelo(),
-                    v.getAvaluo(),
+                    String.format("%f", v.getAvaluo()),
                     v.getCapacidad()
                 });
             }
@@ -138,13 +140,13 @@ public final class VehículosDlg extends javax.swing.JDialog {
         if (cliente != null) {
             vehículo.setCédulaCliente(cliente.getIdentificación());
             vehículo.setCliente(cliente);
-            
+
             return vehículo;
         } else {
             LógicaCliente lc = new LógicaCliente();
-            
+
             String cédula = JOptionPane.showInputDialog(this, "Ingrese la cédula del dueño del vehículo");
-            
+
             Cliente c = lc.obtener(cédula, true);
             if (c == null) {
                 JOptionPane.showMessageDialog(this, "Este cliente no está registrado");
@@ -154,7 +156,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
                 return vehículo;
             }
         }
-        
+
         return null;
     }
 
@@ -413,22 +415,21 @@ public final class VehículosDlg extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this, "Registro de vehículo exitoso");
 
         // cliente = new LógicaCliente().obtener(cliente.getIdentificación(), false);
-
         cargarVehículosTbl();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Vehículo v = lógicaVehículo.obtener(placaTxtFld.getText(), false);
-        
+
         if (v == null) {
             JOptionPane.showMessageDialog(this, "Este vehículo no se encuentra registrado");
             return;
         }
 
         modeloTxtFld.setText(v.getModelo());
-        avalúoTxtFld.setText(v.getAvaluo().toString());
+        avalúoTxtFld.setText(String.format("%.0f", v.getAvaluo()));
         capacidadTxtFld.setText(v.getCapacidad().toString());
-        baseGravableTxtFld.setText(v.getBaseGravable().toString());
+        baseGravableTxtFld.setText(String.format("%.0f", v.getBaseGravable()));
 
         this.cliente = v.getCliente();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -482,7 +483,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         LógicaCliente lc = new LógicaCliente();
-        
+
         if (cliente != null) {
             new ImpuestosDlg(null, true, cliente.getVehículos()).setVisible(true);
         } else {
