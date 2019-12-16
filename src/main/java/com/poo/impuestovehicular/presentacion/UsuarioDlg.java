@@ -37,6 +37,7 @@ public class UsuarioDlg extends javax.swing.JDialog {
         saludo2Lbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Nombre de usuario");
 

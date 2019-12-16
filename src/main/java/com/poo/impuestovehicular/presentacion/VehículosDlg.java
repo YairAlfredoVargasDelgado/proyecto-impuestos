@@ -50,7 +50,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
     private void cargarClaseCmbBx() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
-        model.addElement("Automovil");
+        model.addElement("Automóvil");
         model.addElement("Carga");
         model.addElement("Pasajero");
         model.addElement("Motocicleta");
@@ -134,11 +134,30 @@ public final class VehículosDlg extends javax.swing.JDialog {
         vehículo.setIdMarca(marcaCmbBx.getSelectedItem().toString());
         vehículo.setAvaluo(Double.parseDouble(avalúoTxtFld.getText()));
         vehículo.setCapacidad(Integer.parseInt(capacidadTxtFld.getText()));
-        vehículo.setCédulaCliente(cliente.getIdentificación());
         vehículo.setBaseGravable(Float.parseFloat(baseGravableTxtFld.getText()));
         vehículo.setFechaDeCompra(LocalDate.now());
 
-        return vehículo;
+        if (cliente != null) {
+            vehículo.setCédulaCliente(cliente.getIdentificación());
+            vehículo.setCliente(cliente);
+            
+            return vehículo;
+        } else {
+            LógicaCliente lc = new LógicaCliente();
+            
+            String cédula = JOptionPane.showInputDialog(this, "Ingrese la cédula del dueño del vehículo");
+            
+            Cliente c = lc.obtener(cédula, true);
+            if (c == null) {
+                JOptionPane.showMessageDialog(this, "Este cliente no está registrado");
+            } else {
+                vehículo.setCédulaCliente(cédula);
+                vehículo.setCliente(cliente);
+                return vehículo;
+            }
+        }
+        
+        return null;
     }
 
     @SuppressWarnings("unchecked")
@@ -171,8 +190,10 @@ public final class VehículosDlg extends javax.swing.JDialog {
         baseGravableTxtFld = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel5.setText("Avalúo");
         jLabel5.setToolTipText("");
@@ -256,6 +277,8 @@ public final class VehículosDlg extends javax.swing.JDialog {
             }
         });
 
+        jButton7.setText("Ver liquidaciones");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -307,7 +330,8 @@ public final class VehículosDlg extends javax.swing.JDialog {
                                 .addComponent(jButton3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton4))
-                            .addComponent(jButton6)))
+                            .addComponent(jButton6)
+                            .addComponent(jButton7)))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -322,7 +346,8 @@ public final class VehículosDlg extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(marcaCmbBx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jButton7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(claseCmbBx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -380,13 +405,14 @@ public final class VehículosDlg extends javax.swing.JDialog {
 
         JOptionPane.showMessageDialog(this, "Registro de vehículo exitoso");
 
-        cliente = new LógicaCliente().obtener(cliente.getIdentificación(), false);
+        // cliente = new LógicaCliente().obtener(cliente.getIdentificación(), false);
 
         cargarVehículosTbl();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Vehículo v = lógicaVehículo.obtener(placaTxtFld.getText(), false);
+
         modeloTxtFld.setText(v.getModelo());
         avalúoTxtFld.setText(v.getAvaluo().toString());
         capacidadTxtFld.setText(v.getCapacidad().toString());
@@ -418,28 +444,28 @@ public final class VehículosDlg extends javax.swing.JDialog {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         Vehículo vehículo = new LógicaVehículo().obtener(placaTxtFld.getText(), false);
-        
+
         if (vehículo == null) {
             JOptionPane.showMessageDialog(this, "Este vehículo no está registrado");
             return;
         }
-        
+
         LógicaImpuesto li = new LógicaImpuesto();
         Impuesto impuesto = new Impuesto();
-        
-        impuesto.setId(((Integer)(li.count() + 1)).toString());
+
+        impuesto.setId(((Integer) (li.count() + 1)).toString());
         impuesto.setPagado(false);
         impuesto.setIdVehículo(vehículo.getId());
         impuesto.setFechaDeLiquidación(LocalDate.now());
         impuesto.setVehículo(vehículo);
         impuesto.setTarifa();
         impuesto.liquidar();
-        
+
         if (!li.registrar(impuesto)) {
             JOptionPane.showMessageDialog(this, "La liquidación falló");
             return;
         }
-        
+
         JOptionPane.showMessageDialog(this, "La liquidación fue exitosa");
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -456,6 +482,7 @@ public final class VehículosDlg extends javax.swing.JDialog {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

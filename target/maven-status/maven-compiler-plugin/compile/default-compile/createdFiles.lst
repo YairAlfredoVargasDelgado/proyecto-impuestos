@@ -8,6 +8,7 @@ com\poo\impuestovehicular\logica\LógicaCliente.class
 com\poo\impuestovehicular\entidades\Usuario.class
 com\poo\impuestovehicular\datos\Datos.class
 com\poo\impuestovehicular\logica\LógicaCliente$1.class
+com\poo\impuestovehicular\presentacion\ImpuestosDlg.class
 com\poo\impuestovehicular\entidades\Cliente.class
 com\poo\impuestovehicular\entidades\EntidadBase.class
 com\poo\impuestovehicular\entidades\Marca.class

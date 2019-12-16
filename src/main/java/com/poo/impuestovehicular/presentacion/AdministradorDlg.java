@@ -159,6 +159,7 @@ public class AdministradorDlg extends javax.swing.JDialog {
         rolCmbBx = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         nombresError.setForeground(new java.awt.Color(255, 0, 0));
 
