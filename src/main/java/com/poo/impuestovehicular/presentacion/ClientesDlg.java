@@ -281,7 +281,7 @@ public class ClientesDlg extends javax.swing.JDialog {
             valid = false;
         }
 
-        if (identificaciónTxtFld.getText().length() < 7 || identificaciónTxtFld.getText().length() < 10) {
+        if (identificaciónTxtFld.getText().length() < 7 || identificaciónTxtFld.getText().length() > 10) {
             identificaciónError.setText("La identificación debe tener de 7 a 10 números");
             valid = false;
         }
