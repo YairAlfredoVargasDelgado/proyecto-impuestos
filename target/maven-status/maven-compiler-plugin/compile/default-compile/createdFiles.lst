@@ -23,4 +23,5 @@ com\poo\impuestovehicular\entidades\Cliente.class
 com\poo\impuestovehicular\entidades\EntidadBase.class
 com\poo\impuestovehicular\presentacion\VehículosDlg$7.class
 com\poo\impuestovehicular\entidades\Marca.class
+com\poo\impuestovehicular\presentacion\ImpuestosDlg$2.class
 com\poo\impuestovehicular\entidades\Vehículo.class

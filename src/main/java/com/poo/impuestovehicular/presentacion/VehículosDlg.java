@@ -12,7 +12,6 @@ import com.poo.impuestovehicular.logica.LógicaMarca;
 import com.poo.impuestovehicular.logica.LógicaVehículo;
 import java.time.LocalDate;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -432,7 +431,6 @@ public final class VehículosDlg extends javax.swing.JDialog {
         baseGravableTxtFld.setText(v.getBaseGravable().toString());
 
         this.cliente = v.getCliente();
-        cargarVehículosTbl();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
