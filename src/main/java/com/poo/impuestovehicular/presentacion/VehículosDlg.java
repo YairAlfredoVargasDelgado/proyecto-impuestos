@@ -6,6 +6,7 @@ import com.poo.impuestovehicular.entidades.Impuesto;
 import com.poo.impuestovehicular.entidades.TipoDeVehículo;
 import com.poo.impuestovehicular.entidades.Vehículo;
 import com.poo.impuestovehicular.logica.LógicaCliente;
+import com.poo.impuestovehicular.logica.LógicaImpuesto;
 import com.poo.impuestovehicular.logica.LógicaMarca;
 import com.poo.impuestovehicular.logica.LógicaVehículo;
 import java.time.LocalDate;
@@ -426,18 +427,23 @@ public final class VehículosDlg extends javax.swing.JDialog {
             return;
         }
         
-        LógicaImpuesto 
+        LógicaImpuesto li = new LógicaImpuesto();
         Impuesto impuesto = new Impuesto();
         
-        impuesto.setId();
+        impuesto.setId(((Integer)(li.count() + 1)).toString());
         impuesto.setPagado(false);
-        impuesto.setVehículo(vehículo);
-        impuesto.setTarifa();
         impuesto.setIdVehículo(vehículo.getId());
         impuesto.setFechaDeLiquidación(LocalDate.now());
+        impuesto.setVehículo(vehículo);
+        impuesto.setTarifa();
         impuesto.liquidar();
         
+        if (!li.registrar(impuesto)) {
+            JOptionPane.showMessageDialog(this, "La liquidación falló");
+            return;
+        }
         
+        JOptionPane.showMessageDialog(this, "La liquidación fue exitosa");
     }//GEN-LAST:event_jButton6ActionPerformed
 
 
