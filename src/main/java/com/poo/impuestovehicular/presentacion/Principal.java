@@ -2,7 +2,6 @@ package com.poo.impuestovehicular.presentacion;
 
 import com.poo.impuestovehicular.entidades.Administrador;
 import com.poo.impuestovehicular.entidades.Cliente;
-import com.poo.impuestovehicular.entidades.Usuario;
 
 public class Principal {
 

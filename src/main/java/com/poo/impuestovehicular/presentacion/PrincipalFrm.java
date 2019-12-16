@@ -1,6 +1,8 @@
 package com.poo.impuestovehicular.presentacion;
 
 import com.poo.impuestovehicular.entidades.Administrador;
+import com.poo.impuestovehicular.logica.LógicaMarca;
+import javax.swing.JOptionPane;
 
 public class PrincipalFrm extends javax.swing.JFrame {
 
@@ -118,6 +120,11 @@ public class PrincipalFrm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (new LógicaMarca().obtenerTodas(true).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay marcas registrada");
+            return;
+        }
+        
         new VehículosDlg(this, true, null).setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
