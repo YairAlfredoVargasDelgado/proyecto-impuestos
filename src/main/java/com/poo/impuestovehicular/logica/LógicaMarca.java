@@ -2,6 +2,8 @@ package com.poo.impuestovehicular.logica;
 
 import com.poo.impuestovehicular.datos.Datos;
 import com.poo.impuestovehicular.entidades.Marca;
+import com.poo.impuestovehicular.entidades.Vehículo;
+import java.util.ArrayList;
 
 public class LógicaMarca extends Lógica<Marca> {
 
@@ -19,7 +21,15 @@ public class LógicaMarca extends Lógica<Marca> {
                 marca.setNombre(_datos[2]);
 
                 if (!lazy) {
-                    marca.setVehículos(new LógicaVehículo().obtenerTodas(true));
+                    ArrayList<Vehículo> vehículos = new ArrayList<>();
+                    
+                    for (Vehículo v: new LógicaVehículo().obtenerTodas(true)) {
+                        if (v.getIdMarca().equals(_datos[2])) {
+                            vehículos.add(v);
+                        }
+                    }
+                    
+                    marca.setVehículos(vehículos);
                 } else {
                     marca.setVehículos(null);
                 }
