@@ -39,8 +39,8 @@ public final class VehículosDlg extends javax.swing.JDialog {
     private void cargarMarcaCmbBx() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
-        for (Marca m: lógicaMarca.obtenerTodas(true)) {
-            model.addElement(m);
+        for (Marca m : lógicaMarca.obtenerTodas(true)) {
+            model.addElement(m.getNombre());
         }
 
         marcaCmbBx.setModel(model);
@@ -50,13 +50,10 @@ public final class VehículosDlg extends javax.swing.JDialog {
     private void cargarClaseCmbBx() {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
 
-        ArrayList<String> lista = new ArrayList<>();
-        lista.add("Automóvil");
-        lista.add("Carga");
-        lista.add("Pasajero");
-        lista.add("Motocicleta");
-
-        model.addAll(lista);
+        model.addElement("Automovil");
+        model.addElement("Carga");
+        model.addElement("Pasajero");
+        model.addElement("Motocicleta");
 
         claseCmbBx.setModel(model);
         claseCmbBx.setSelectedIndex(0);
